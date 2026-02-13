@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Inter:wght@400;500&display=swap');
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.4s ease;
+}
+
+.page {
+  width: 94%;
+  height: 94%;
+  background: #fffaf2;
+  box-shadow: 0 0 60px rgba(0,0,0,0.2);
+  position: relative;
+  padding: 40px;
+}
+
+#eventTitle {
+  text-align: center;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 44px;
+  margin: 0;
+  color: #4a3726;
+}
+
+/* IMAGE GROUP */
+#imageGroup {
+  position: absolute;
+  width: 80%;
+  height: 60%;
+  left: 10%;
+  top: 25%;
+}
+
+/* POLAROID */
+.polaroid {
+  position: absolute;
+  width: 260px;
+  background: white;
+  padding: 15px 15px 55px 15px;
+  box-shadow: 8px 8px 18px rgba(0,0,0,0.25);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+}
+
+.polaroid.show {
+  opacity: 1;
+}
+
+.polaroid img {
+  width: 100%;
+}
+
+/* Visible darker tape */
+.polaroid::before {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 24px;
+  background: #bfa98c;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+/* CAPTIONS */
+.caption {
+  position: absolute;
+  width: 260px;
+  padding: 18px;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 22px;
+  line-height: 1.5;
+  background: #fff;
+  box-shadow: 3px 5px 12px rgba(0,0,0,0.1);
+}
+
+.me {
+  border-left: 5px solid #c89f73;
+}
+
+.partner {
+  border-right: 5px solid #6f8a99;
+}
+
+#nextArrow {
+  position: absolute;
+  bottom: 25px;
+  right: 35px;
+  font-size: 28px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
