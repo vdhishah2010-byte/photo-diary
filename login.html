@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Private Access</title>
+</head>
+<body>
+  <h2>Enter Access Code</h2>
+
+  <input type="password" id="code" placeholder="Access Code">
+  <button onclick="login()">Enter</button>
+  <p id="error" style="color:red;"></p>
+
+  <script>
+    async function login() {
+      const code = document.getElementById("code").value;
+
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code })
+      });
+
+      if (res.ok) {
+        window.location.href = "/";
+      } else {
+        document.getElementById("error").innerText = "Wrong code";
+      }
+    }
+  </script>
+</body>
+</html>
