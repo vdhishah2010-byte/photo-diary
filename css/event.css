@@ -1,100 +1,149 @@
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Inter:wght@400;500&display=swap');
-
-body {
+/* ================= RESET ================= */
+* {
   margin: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Inter', sans-serif;
-  transition: background 0.4s ease;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.page {
-  width: 94%;
-  height: 94%;
-  background: #fffaf2;
-  box-shadow: 0 0 60px rgba(0,0,0,0.2);
+/* ================= FULL PAGE PAPER TEXTURE ================= */
+body {
+  height: 100vh;
+  overflow: hidden;
+
+  font-family: 'Spectral', serif;
+  color: #2f2622;
+
+  background-color: #f4e8dc;
+
+  /* Stronger visible paper texture */
+  background-image: 
+    url("https://www.transparenttextures.com/patterns/paper.png"),
+    url("https://www.transparenttextures.com/patterns/fibers.png");
+
+  background-blend-mode: multiply;
+  background-size: 300px 300px;
+}
+
+/* Subtle vignette to pull focus inward */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background: radial-gradient(circle at center,
+              transparent 55%,
+              rgba(0,0,0,0.18) 100%);
+}
+
+/* ================= TITLE ZONE ================= */
+#titleZone {
   position: relative;
-  padding: 40px;
+  height: 75px;
+  width: 100%;
+  z-index: 3000;
 }
 
 #eventTitle {
-  text-align: center;
-  font-family: 'Shadows Into Light', cursive;
-  font-size: 44px;
-  margin: 0;
-  color: #4a3726;
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: 'Caveat', cursive;
+  font-size: 3.8rem;
+
+  color: #3b2d28;
 }
 
-/* IMAGE GROUP */
+/* ================= CENTERED CONTENT AREA ================= */
 #imageGroup {
-  position: absolute;
-  width: 80%;
-  height: 60%;
-  left: 10%;
-  top: 25%;
+  position: relative;
+
+  /* Constrain layout toward center */
+  width: 85%;
+  margin: 0 auto;
+
+  height: calc(100% - 75px);
+  top: 75px;
 }
 
-/* POLAROID */
+/* ================= POLAROIDS ================= */
 .polaroid {
-  position: absolute;
   width: 260px;
-  background: white;
-  padding: 15px 15px 55px 15px;
-  box-shadow: 8px 8px 18px rgba(0,0,0,0.25);
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  opacity: 0;
-}
+  padding: 14px;
+  background: #fffdf9;
+  border-radius: 3px;
 
-.polaroid.show {
-  opacity: 1;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.25),
+    0 6px 12px rgba(0,0,0,0.15);
+
+  position: absolute;
 }
 
 .polaroid img {
   width: 100%;
+  display: block;
+  border-radius: 2px;
 }
 
-/* Visible darker tape */
-.polaroid::before {
+.polaroid::after {
   content: "";
   position: absolute;
-  width: 90px;
-  height: 24px;
-  background: #bfa98c;
   top: -12px;
   left: 50%;
   transform: translateX(-50%) rotate(-3deg);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+
+  width: 70px;
+  height: 18px;
+
+  background: rgba(230,210,185,0.9);
+  border-radius: 2px;
+
+  box-shadow: 0 3px 5px rgba(0,0,0,0.15);
 }
 
-/* CAPTIONS */
+/* ================= CAPTIONS ================= */
 .caption {
   position: absolute;
-  width: 260px;
-  padding: 18px;
-  font-family: 'Shadows Into Light', cursive;
-  font-size: 22px;
-  line-height: 1.5;
-  background: #fff;
-  box-shadow: 3px 5px 12px rgba(0,0,0,0.1);
+  width: 340px;
+  padding: 22px;
+
+  background: rgba(255,255,255,0.97);
+  border-radius: 8px;
+
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  line-height: 1.75;
+
+  box-shadow: 0 12px 25px rgba(0,0,0,0.18);
 }
 
-.me {
-  border-left: 5px solid #c89f73;
+#captionMe {
+  border-left: 4px solid #b76e79;
 }
 
-.partner {
-  border-right: 5px solid #6f8a99;
+#captionPartner {
+  border-left: 4px solid #6d8ea0;
 }
 
+/* ================= NEXT ARROW ================= */
 #nextArrow {
   position: absolute;
-  bottom: 25px;
-  right: 35px;
-  font-size: 28px;
-  border: none;
-  background: transparent;
+  right: 40px;
+  bottom: 30px;
+
+  font-size: 2rem;
   cursor: pointer;
+
+  color: #3b2d28;
+  z-index: 3000;
+
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#nextArrow:hover {
+  transform: translateX(6px);
+  opacity: 0.7;
 }
